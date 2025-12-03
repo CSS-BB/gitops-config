@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ values.realm }}-keycloak
+  namespace: argocd
+spec:
+  project: {{ values.argocd_project }}
+  source:
+    repoURL: https://github.com/{{ values.github_owner }}/{{ values.repo }}.git
+    targetRevision: main
+    path: k8s
+  destination:
+    server: {{ values.cluster_server }}
+    namespace: {{ values.cluster_namespace }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
