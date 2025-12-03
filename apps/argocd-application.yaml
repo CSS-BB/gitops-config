@@ -6,7 +6,7 @@ metadata:
 spec:
   project: 
   source:
-    repoURL: https://github.com//.git
+    repoURL: https://github.com//CSS-BB/yambol.git
     targetRevision: main
     path: k8s
   destination:
